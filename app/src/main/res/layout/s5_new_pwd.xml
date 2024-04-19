@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/s5_imageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/gym_back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/s5_linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginEnd="28dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_max="355dp">
+
+
+        <TextView
+            android:id="@+id/s5_new_pwd_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/carterone_regular"
+            android:text="New Password"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/s5_new_pwd_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_regular"
+            android:text="Motivation Text ,Motivation Text , Motivation Text, blabla bla bla"
+            android:textAlignment="center"
+            android:textColor="#767171"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/s5_pwd_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:paddingTop="20dp"
+            android:text="Password"
+            android:textColor="#767171"
+            android:textSize="18sp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="match_parent">
+            <EditText
+                android:id="@+id/s5_pwd_txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:alpha="0.47"
+                android:background="@drawable/credentials_field"
+                android:ems="10"
+                android:text="asd"
+                android:inputType="textVisiblePassword"
+                android:paddingVertical="5dp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textSize="22sp" />
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/pwd_eye_enabled"
+                android:layout_gravity="end"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="7dp"
+                />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/s5_error_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/roboto_regular"
+            android:text="⬤ At least contains 8 characters \n⬤ Contains a capital and numeric character"
+            android:minLines="2"
+            android:textAlignment="center"
+            android:textColor="#ff0000"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+
+        <Button
+            android:layout_marginTop="15dp"
+            android:id="@+id/s5_continue_btn"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_gradient"
+            android:fontFamily="@font/carterone_regular"
+            android:text="Continue"
+            android:textColor="@color/white"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            />
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

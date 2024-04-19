@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">coreCraft</string>
     <string name="loadingScreen_text_0">Your personal digital all-in-one\ncoach</string>
+    <string name="background_image">Background image</string>
+    <string name="previous_button">Previous button</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="pls_enter_email">Please enter your registered email . An otp code will be sent to you.</string>
+    <string name="email">Email</string>
+    <string name="invalid_email_error">** Please enter a valid email</string>
+    <string name="Continue">Continue</string>
+    <string name="otp_code">OTP Code</string>
+    <string name="otp_code_floor">otp code tile</string>
+    <string name="invalid_otp_code_error">** Please enter a valid OTP code</string>
 </resources>
