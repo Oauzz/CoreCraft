@@ -11,4 +11,12 @@
     <string name="otp_code">OTP Code</string>
     <string name="otp_code_floor">otp code tile</string>
     <string name="invalid_otp_code_error">** Please enter a valid OTP code</string>
+    <string name="new_pwd">New Password</string>
+    <string name="motivation_txt">Motivation Text ,Motivation Text , Motivation Text, blabla bla bla</string>
+    <string name="password">Password</string>
+    <string name="eye">eye</string>
+    <string name="invalid_pwd_error">⬤ At least contains 8 characters \n⬤ Contains a capital and numeric character</string>
+    <string name="invalid_pwd_8chars_error">⬤ At least contains 8 characters</string>
+    <string name="invalid_pwd_alphanumeric_error">⬤ Contains a capital and numeric character</string>
+
 </resources>

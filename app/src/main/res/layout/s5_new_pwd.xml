@@ -14,7 +14,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/background_image" />
 
     <LinearLayout
         android:id="@+id/s5_linearLayout"
@@ -36,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:fontFamily="@font/carterone_regular"
-            android:text="New Password"
+            android:text="@string/new_pwd"
             android:textColor="@color/white"
             android:textSize="22sp"
             android:textStyle="bold" />
@@ -46,7 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_regular"
-            android:text="Motivation Text ,Motivation Text , Motivation Text, blabla bla bla"
+            android:text="@string/motivation_txt"
             android:textAlignment="center"
             android:textColor="#767171"
             android:textSize="14sp"
@@ -58,8 +59,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:paddingTop="20dp"
-            android:text="Password"
+            android:text="@string/password"
             android:textColor="#767171"
+            android:labelFor="@id/s5_pwd_txt"
             android:textSize="18sp" />
 
         <FrameLayout
@@ -73,20 +75,21 @@
                 android:alpha="0.47"
                 android:background="@drawable/credentials_field"
                 android:ems="10"
-                android:text="asd"
-                android:inputType="textVisiblePassword"
+                android:inputType="textPassword"
                 android:paddingVertical="5dp"
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp"
-                android:textSize="22sp" />
+                android:textSize="22sp"
+                android:autofillHints="" />
             <ImageView
+                android:id="@+id/s5_eye"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
-                android:src="@drawable/pwd_eye_enabled"
+                android:src="@drawable/pwd_eye_disabled"
                 android:layout_gravity="end"
                 android:layout_marginTop="7dp"
                 android:layout_marginEnd="7dp"
-                />
+                android:contentDescription="@string/eye" />
         </FrameLayout>
 
         <TextView
@@ -95,7 +98,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="@font/roboto_regular"
-            android:text="⬤ At least contains 8 characters \n⬤ Contains a capital and numeric character"
             android:minLines="2"
             android:textAlignment="center"
             android:textColor="#ff0000"
@@ -111,7 +113,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/btn_gradient"
             android:fontFamily="@font/carterone_regular"
-            android:text="Continue"
+            android:text="@string/Continue"
             android:textColor="@color/white"
             android:textAlignment="center"
             android:textSize="18sp"
