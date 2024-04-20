@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">coreCraft</string>
     <string name="loadingScreen_text_0">Your personal digital all-in-one\ncoach</string>
+    <string name="s1_btn_text1">I\'m new to CoreCraft</string>
+    <string name="s1_signInText">Already have an account, <clickable>Sign In</clickable></string>
+    <string name="s1_featureText_1">LOLOLOLOLOLOLOLLOO</string>
+    <string name="sf_step1_age">Your gender\nPlease provide your age</string>
+    <string name="sf_step1_gender">Your gender\nPlease provide your gender</string>
+    <string name="sf_step2_Height">Your Height\nHow tall are you ?</string>
+    <string name="sf_step2_Weight">Your Weight\nHow much weight have\nyou ?</string>
+    <string name="sf_step2_metImp1"><![CDATA[cm / ft & in]]></string>
+    <string name="sf_step2_metImp2">Kg / Lbs</string>
 </resources>
