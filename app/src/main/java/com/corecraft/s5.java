@@ -17,6 +17,7 @@ public class s5 extends AppCompatActivity {
     boolean isPwdVisible = false;
     TextView Error;
     Button Continue;
+    Button Login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +57,9 @@ public class s5 extends AppCompatActivity {
             msg.append(getString(R.string.invalid_pwd_alphanumeric_error)).append('\n');
         if(msg.toString().equals("")){
             Error.setText("");
+            //TODO : change user password
+            setContentView(R.layout.s6_pwd_done);
+            Login = (Button) findViewById(R.id.s6_login_btn);
         }else{
             Error.setText(msg);
         }

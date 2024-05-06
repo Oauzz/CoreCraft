@@ -18,5 +18,16 @@
     <string name="invalid_pwd_error">⬤ At least contains 8 characters \n⬤ Contains a capital and numeric character</string>
     <string name="invalid_pwd_8chars_error">⬤ At least contains 8 characters</string>
     <string name="invalid_pwd_alphanumeric_error">⬤ Contains a capital and numeric character</string>
+    <string name="pwd_reset_success">Password reset successfully. Continue to</string>
+    <string name="login">Login</string>
+    <string name="home">Home</string>
+    <string name="workouts">Workouts</string>
+    <string name="plans">Plans</string>
+    <string name="stats">Stats</string>
+    <string name="bot">Bot</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="main_back_button">main back button</string>
+    <string name="main_home_button">main home button</string>
 
 </resources>
