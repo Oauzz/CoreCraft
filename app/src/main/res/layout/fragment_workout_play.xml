@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/primary_color_4"
+    android:gravity="center_vertical"
+    android:padding="10dp"
+    android:layout_marginVertical="8dp"
+    android:orientation="horizontal">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/exercise_play_img_card"
+        android:layout_width="120dp"
+        android:layout_height="70dp"
+        app:cardCornerRadius="20dp">
+        <ImageView
+            android:id="@+id/exercise_play_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/bicep_curl"
+            android:contentDescription="TODO" />
+    </androidx.cardview.widget.CardView>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+        <TextView
+            android:id="@+id/exercise_play_name"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginStart="10dp"
+            android:text="Bicep curls"
+            android:textColor="@color/primary_color_1"
+            android:textSize="14sp"
+            android:fontFamily="@font/carterone_regular"
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/exercise_play_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginStart="10dp"
+            android:text="4 sets X 8 reps"
+            android:textColor="@color/primary_color_1"
+            android:textSize="14sp"
+            android:fontFamily="@font/carterone_regular"
+            android:gravity="center" />
+    </LinearLayout>
+    <View
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:visibility="invisible"
+        />
+    <Button
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/check_btn_false" />
+</LinearLayout>
