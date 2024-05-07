@@ -31,5 +31,7 @@
     <string name="main_home_button">main home button</string>
     <string name="custom_workouts">Custom Workouts</string>
     <string name="workout_title">WORKOUT TITLE</string>
-
+    <string name="exercise_image">exercise image</string>
+    <string name="sets">sets</string>
+    <string name="reps">reps</string>
 </resources>

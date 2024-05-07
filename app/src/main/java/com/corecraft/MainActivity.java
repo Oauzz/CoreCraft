@@ -13,8 +13,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
 
+        WorkoutFragment workoutFragment = new WorkoutFragment();
+        workoutFragment.setManager(getSupportFragmentManager());
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.home_content,new WorkoutFragment())
+                .replace(R.id.home_content,workoutFragment)
                 .commit();
     }
 }

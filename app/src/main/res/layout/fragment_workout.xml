@@ -5,7 +5,8 @@
     android:layout_height="wrap_content"
     android:layout_marginVertical="5dp"
     android:background="@drawable/workout_btn"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:id="@+id/fragment_workout_layout">
 
     <TextView
         android:id="@+id/workout_item_id"

@@ -3,6 +3,7 @@ package com.corecraft;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,8 +18,6 @@ import android.view.ViewGroup;
  */
 public class WorkoutFragment extends Fragment {
 
-    private RecyclerView recyclerView;
-
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -27,6 +26,15 @@ public class WorkoutFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private FragmentManager manager;
+
+    public FragmentManager getManager() {
+        return manager;
+    }
+
+    public void setManager(FragmentManager manager) {
+        this.manager = manager;
+    }
 
     public WorkoutFragment() {
         // Required empty public constructor
@@ -64,10 +72,10 @@ public class WorkoutFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_workout_list, container, false);
-        recyclerView = v.findViewById(R.id.custom_workout_list);
+        RecyclerView recyclerView = v.findViewById(R.id.custom_workout_list);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(v.getContext()));
-        recyclerView.setAdapter(new WorkoutAdapter(v.getContext(),Workout.WORKOUTS));
+        recyclerView.setAdapter(new WorkoutAdapter(v.getContext(),Workout.WORKOUTS,manager));
         return v;
     }
 }
