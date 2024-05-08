@@ -12,7 +12,7 @@ public class TargetMuscles {
             Arrays.asList("Back","Chest","Arm","Leg","Shoulder","Abs")
     );
 
-    public List<String> getTarget(int target){
+    public static List<String> getTarget(int target){
         List<String> targetMuscles = new ArrayList<>();
         for(int i = 0;i < targets.size();++i){
             if(((1 << i) & target) != 0){

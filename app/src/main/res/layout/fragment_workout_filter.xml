@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_container"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/filter_btn"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="15dp"
+        android:paddingVertical="10dp">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/search" />
+
+        <EditText
+            android:id="@+id/fragment_workout_filter_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/carterone_regular"
+            android:minEms="5"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/fragment_workout_filter_equipment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/filter_btn"
+        android:drawablePadding="10dp"
+        android:fontFamily="@font/carterone_regular"
+        android:padding="10dp"
+        android:text="@string/equipment"
+        android:textColor="@color/white"
+        app:drawableLeftCompat="@drawable/check_btn_true" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:columnCount="2"
+            android:columnOrderPreserved="true"
+            android:rowCount="3"
+            android:rowOrderPreserved="true">
+
+            <LinearLayout
+                android:id="@+id/fragment_workout_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/fragment_workout_back_img"
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"
+                    android:background="@drawable/target_img_selected"
+                    android:contentDescription="@string/back_muscles"
+                    android:src="@drawable/back" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/primary_color_2"
+                    android:fontFamily="@font/carterone_regular"
+                    android:text="@string/back_exercises"
+                    android:textAlignment="center"
+                    android:textColor="@color/primary_color_4" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/fragment_workout_chest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/fragment_workout_chest_img"
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"
+                    android:background="@drawable/target_img_selected"
+                    android:contentDescription="@string/chest_muscles"
+                    android:src="@drawable/chest" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/primary_color_2"
+                    android:fontFamily="@font/carterone_regular"
+                    android:text="@string/chest_exercises"
+                    android:textAlignment="center"
+                    android:textColor="@color/primary_color_4" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/fragment_workout_arms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/fragment_workout_arms_img"
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"
+                    android:background="@drawable/target_img_selected"
+                    android:contentDescription="@string/arm_muscles"
+                    android:src="@drawable/arms" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/primary_color_2"
+                    android:fontFamily="@font/carterone_regular"
+                    android:text="@string/arm_exercises"
+                    android:textAlignment="center"
+                    android:textColor="@color/primary_color_4" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/fragment_workout_legs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/fragment_workout_legs_img"
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"
+                    android:background="@drawable/target_img_selected"
+                    android:contentDescription="@string/leg_muscles"
+                    android:src="@drawable/legs" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/primary_color_2"
+                    android:fontFamily="@font/carterone_regular"
+                    android:text="@string/leg_exercises"
+                    android:textAlignment="center"
+                    android:textColor="@color/primary_color_4" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/fragment_workout_shoulder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/fragment_workout_shoulder_img"
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"
+                    android:background="@drawable/target_img_selected"
+                    android:contentDescription="@string/shoulder_muscles"
+                    android:src="@drawable/shoulders" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/primary_color_2"
+                    android:fontFamily="@font/carterone_regular"
+                    android:text="@string/shoulder_exercises"
+                    android:textAlignment="center"
+                    android:textColor="@color/primary_color_4" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/fragment_workout_abs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/fragment_workout_abs_img"
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"
+                    android:background="@drawable/target_img_selected"
+                    android:contentDescription="@string/abs_muscles"
+                    android:src="@drawable/abs" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/primary_color_2"
+                    android:fontFamily="@font/carterone_regular"
+                    android:text="@string/abs_exercises"
+                    android:textAlignment="center"
+                    android:textColor="@color/primary_color_4" />
+            </LinearLayout>
+        </GridLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -40,8 +40,15 @@ public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutViewHolder>{
                     .commit();
         });
         holder.workoutDel.setOnClickListener(v -> {
-            workouts.remove(workouts.get(holder.id));
+            workouts.remove(holder.id);
             notifyItemRemoved(holder.id);
+        });
+        holder.workoutEdit.setOnClickListener(v -> {
+            WorkoutEditFragment fragment = WorkoutEditFragment.newInstance(holder.id);
+            fragmentManager.beginTransaction()
+                    .replace(R.id.home_content,fragment)
+                    .addToBackStack(null)
+                    .commit();
         });
     }
 

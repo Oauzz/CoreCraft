@@ -1,23 +1,21 @@
 package com.corecraft;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import android.widget.Toast;
-
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link WorkoutPlayFragment#newInstance} factory method to
+ * Use the {@link WorkoutEditFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class WorkoutPlayFragment extends Fragment {
+public class WorkoutEditFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,12 +24,12 @@ public class WorkoutPlayFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private int workout_id;
 
-    public WorkoutPlayFragment() {
+    public WorkoutEditFragment() {
         // Required empty public constructor
     }
 
-    public static WorkoutPlayFragment newInstance(int workout_id) {
-        WorkoutPlayFragment fragment = new WorkoutPlayFragment();
+    public static WorkoutEditFragment newInstance(int workout_id) {
+        WorkoutEditFragment fragment = new WorkoutEditFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_WORKOUT_ID, workout_id);
         fragment.setArguments(args);
@@ -50,16 +48,15 @@ public class WorkoutPlayFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        final View v = inflater.inflate(R.layout.fragment_workout_play_list, container, false);
-        final RecyclerView recyclerView = v.findViewById(R.id.custom_workout_play_list);
+        final View v = inflater.inflate(R.layout.fragment_workout_edit_list, container, false);
+        final RecyclerView recyclerView = v.findViewById(R.id.custom_workout_edit_list);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(v.getContext()));
         if (getArguments() != null) {
             final int id = getArguments().getInt(ARG_WORKOUT_ID);
-            recyclerView.setAdapter(new WorkoutPlayAdapter(v.getContext(),Workout.WORKOUTS.get(id).exerciseDetails));
-            final TextView title = v.findViewById(R.id.custom_workout_play_list_name);
-            title.setText(Workout.WORKOUTS.get(id).getName());
-        }
+            recyclerView.setAdapter(new WorkoutEditAdapter(v.getContext(),Workout.WORKOUTS.get(id).exerciseDetails));
+            final TextView title = v.findViewById(R.id.custom_workout_edit_list_name);
+            title.setText(Workout.WORKOUTS.get(id).getName());        }
         return v;
     }
 }

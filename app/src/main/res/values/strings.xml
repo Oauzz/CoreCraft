@@ -34,4 +34,19 @@
     <string name="exercise_image">exercise image</string>
     <string name="sets">sets</string>
     <string name="reps">reps</string>
+    <string name="filter">filter</string>
+    <string name="filter_image">filter image</string>
+    <string name="equipment">Equipment</string>
+    <string name="back_muscles">Back muscles</string>
+    <string name="back_exercises">Back Exercises</string>
+    <string name="chest_muscles">Chest muscles</string>
+    <string name="chest_exercises">Chest Exercises</string>
+    <string name="arm_exercises">Arm Exercises</string>
+    <string name="arm_muscles">Arm muscles</string>
+    <string name="leg_muscles">Leg muscles</string>
+    <string name="leg_exercises">Leg Exercises</string>
+    <string name="shoulder_muscles">Shoulder muscles</string>
+    <string name="shoulder_exercises">Shoulder Exercises</string>
+    <string name="abs_muscles">Abs muscles</string>
+    <string name="abs_exercises">Abs Exercises</string>
 </resources>

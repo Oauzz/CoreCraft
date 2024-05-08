@@ -19,12 +19,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textSize="11sp"
-            android:textColor="@color/primary_color_5"
+            android:textColor="@color/primary_color_3"
             android:text="@string/home"
             android:layout_gravity="center_vertical"
             android:gravity="center_horizontal"
             app:drawableTopCompat="@drawable/bottom_toolbar_home"
-            app:drawableTint="@color/primary_color_5"
+            app:drawableTint="@color/primary_color_3"
             android:layout_weight="1"/>
         <TextView
             android:id="@+id/bottom_toolbar_workout"

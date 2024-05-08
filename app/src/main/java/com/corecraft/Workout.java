@@ -7,15 +7,15 @@ import java.util.List;
 public class Workout {
     public static final List<Workout> WORKOUTS = new ArrayList<>();
     static {
-        WORKOUTS.add(new Workout(1,"first workout", Arrays.asList(
+        WORKOUTS.add(new Workout(1,"first workout", new ArrayList<>(Arrays.asList(
                 new ExerciseDetails(Exercise.EXERCISES.get(0),4,8),
                 new ExerciseDetails(Exercise.EXERCISES.get(2),3,12)
-        )));
-        WORKOUTS.add(new Workout(2,"upper body workout", Arrays.asList(
+        ))));
+        WORKOUTS.add(new Workout(2,"upper body workout", new ArrayList<>(Arrays.asList(
                 new ExerciseDetails(Exercise.EXERCISES.get(0),4,10),
                 new ExerciseDetails(Exercise.EXERCISES.get(1),4,8)
-        )));
-        WORKOUTS.add(new Workout(3,"upper body workout", Arrays.asList(
+        ))));
+        WORKOUTS.add(new Workout(3,"upper body workout", new ArrayList<>(Arrays.asList(
                 new ExerciseDetails(Exercise.EXERCISES.get(0),1,10),
                 new ExerciseDetails(Exercise.EXERCISES.get(1),2,9),
                 new ExerciseDetails(Exercise.EXERCISES.get(2),3,8),
@@ -26,7 +26,7 @@ public class Workout {
                 new ExerciseDetails(Exercise.EXERCISES.get(1),8,3),
                 new ExerciseDetails(Exercise.EXERCISES.get(2),9,2),
                 new ExerciseDetails(Exercise.EXERCISES.get(0),10,1)
-        )));
+        ))));
     }
     int id;
     String name;
