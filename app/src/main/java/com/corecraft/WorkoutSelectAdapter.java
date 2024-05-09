@@ -1,6 +1,13 @@
 package com.corecraft;
 
+import static com.corecraft.MainActivity.fragmentManager;
+import static com.corecraft.WorkoutSelectFragment.ARG_WORKOUT_NAME;
+import static com.corecraft.WorkoutSelectFragment.ARG_WORKOUT_TARGET;
+import static com.corecraft.WorkoutSelectFragment.ARG_WORKOUT_WITH_EQU;
+import static com.corecraft.WorkoutSelectFragment.REQUEST_KEY;
+
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -12,12 +19,13 @@ import java.util.List;
 import java.util.Locale;
 
 public class WorkoutSelectAdapter extends RecyclerView.Adapter<WorkoutSelectViewHolder> {
-
+    boolean toSelect;
     Context context;
     List<Exercise> orgExercises;
     List<Exercise> exercises;
 
-    public WorkoutSelectAdapter(Context context, List<Exercise> exercises, int target, String name, boolean with_equipped) {
+    public WorkoutSelectAdapter(boolean toSelect,Context context, List<Exercise> exercises, int target, String name, boolean with_equipped) {
+        this.toSelect = toSelect;
         this.context = context;
         this.orgExercises = exercises;
         filterExercises(target,name,with_equipped);
@@ -53,9 +61,17 @@ public class WorkoutSelectAdapter extends RecyclerView.Adapter<WorkoutSelectView
     @Override
     public void onBindViewHolder(@NonNull WorkoutSelectViewHolder holder, int position) {
         final Exercise exercise = exercises.get(position);
-        holder.exerciseImage.setImageResource(exercise.image);
+        holder.exerciseImage.setExercise(exercise);
         holder.exerciseName.setText(exercise.name);
         holder.exerciseTarget.setText(String.join(" & ",TargetMuscles.getTarget(exercise.getTarget())).concat(" muscles"));
+        if(toSelect){
+            holder.exerciseBtn.setOnClickListener(v -> {
+                Bundle args = new Bundle();
+                args.putInt("id",exercise.id);
+                fragmentManager.setFragmentResult("Exercise",args);
+                fragmentManager.popBackStack();
+            });
+        }
     }
 
     @Override

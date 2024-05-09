@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/primary_color_4">
+
+    <ImageView
+        android:id="@+id/exercise_gif"
+        android:layout_marginHorizontal="0dp"
+        android:layout_width="180dp"
+        android:layout_height="100dp"
+        android:background="@drawable/bicep_curl_vid"
+        android:contentDescription="@string/exercise_gif"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/description"
+        android:fontFamily="@font/carterone_regular"
+        android:textColor="@color/primary_color_1"
+        android:textSize="18sp"/>
+    <TextView
+        android:id="@+id/exercise_desc"
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="A popular exercise that targets the biceps brachii muscle, which is responsible for flexing the elbow and forearm"
+        android:fontFamily="@font/carterone_regular"
+        android:textColor="@color/primary_color_3"
+        android:textSize="14sp"/>
+    <TextView
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/instructions"
+        android:fontFamily="@font/carterone_regular"
+        android:textColor="@color/primary_color_1"
+        android:textSize="18sp"/>
+    <TextView
+        android:id="@+id/exercise_instr"
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1.) Start by standing with your feet shoulders width apart.\n 2.) Pick up the barbells using a palm inward grip.\n 3.) Curl each barbell alternating each time.\n 4.) Repeat for the desired amount of reps."
+        android:fontFamily="@font/carterone_regular"
+        android:textColor="@color/primary_color_3"
+        android:textSize="14sp"/>
+
+    <Button
+        android:id="@+id/exercise_ok_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:background="@drawable/workout_btn"
+        android:text="@string/ok"
+        android:textColor="@color/white"
+        android:fontFamily="@font/carterone_regular"/>
+</LinearLayout>
+</ScrollView>

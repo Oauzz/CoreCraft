@@ -1,6 +1,7 @@
 package com.corecraft;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.res.ColorStateList;
@@ -15,6 +16,8 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static FragmentManager fragmentManager;
+
     TextView home,workouts,plans,stats,bot;
     List<TextView> bottomToolbar = new ArrayList<>();
 
@@ -22,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
+
+        fragmentManager = getSupportFragmentManager();
 
         home = findViewById(R.id.bottom_toolbar_home);
         workouts = findViewById(R.id.bottom_toolbar_workout);
@@ -50,7 +55,8 @@ public class MainActivity extends AppCompatActivity {
                     TargetMuscles.ARM | TargetMuscles.ABS | TargetMuscles.LEG
                     | TargetMuscles.BACK | TargetMuscles.CHEST | TargetMuscles.SHOULDER,
                     "",
-                    true
+                    true,
+                    false
             );
             workoutSelectFragment.setManager(getSupportFragmentManager());
             getSupportFragmentManager().beginTransaction()

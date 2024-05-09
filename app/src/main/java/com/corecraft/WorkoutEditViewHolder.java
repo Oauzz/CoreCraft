@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class WorkoutEditViewHolder extends RecyclerView.ViewHolder {
     public int id;
-    public ImageView exerciseImage;
+    public ExerciseViewer exerciseImage;
     public TextView exerciseName,exerciseAmount;
     public Button exerciseEdit,exerciseDelete;
     public WorkoutEditViewHolder(@NonNull View itemView) {

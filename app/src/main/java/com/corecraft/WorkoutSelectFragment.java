@@ -29,12 +29,15 @@ public class WorkoutSelectFragment extends Fragment {
     public static final String ARG_WORKOUT_TARGET = "workout_target";
     public static final String ARG_WORKOUT_NAME = "workout_name";
     public static final String ARG_WORKOUT_WITH_EQU = "workout_with_equ";
+    public static final String ARG_TO_SELECT = "to_select";
+
 
 
     // TODO: Rename and change types of parameters
     private int workout_target;
     private String workout_name;
     private boolean workout_with_equ;
+    private boolean toSelect;
     private RecyclerView recyclerView;
 
     public FragmentManager getManager() {
@@ -52,12 +55,13 @@ public class WorkoutSelectFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static WorkoutSelectFragment newInstance(int workout_target,String workout_name,boolean workout_with_equ) {
+    public static WorkoutSelectFragment newInstance(int workout_target,String workout_name,boolean workout_with_equ,boolean toSelect) {
         WorkoutSelectFragment fragment = new WorkoutSelectFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_WORKOUT_TARGET, workout_target);
         args.putString(ARG_WORKOUT_NAME, workout_name);
         args.putBoolean(ARG_WORKOUT_WITH_EQU, workout_with_equ);
+        args.putBoolean(ARG_TO_SELECT,toSelect);
         fragment.setArguments(args);
         return fragment;
     }
@@ -69,6 +73,7 @@ public class WorkoutSelectFragment extends Fragment {
             workout_target = getArguments().getInt(ARG_WORKOUT_TARGET);
             workout_name = getArguments().getString(ARG_WORKOUT_NAME);
             workout_with_equ = getArguments().getBoolean(ARG_WORKOUT_WITH_EQU);
+            toSelect = getArguments().getBoolean(ARG_TO_SELECT);
         }
         getParentFragmentManager()
                 .setFragmentResultListener(REQUEST_KEY, this, (requestKey, result) -> {
@@ -97,7 +102,7 @@ public class WorkoutSelectFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(v.getContext()));
         if (getArguments() != null) {
-            recyclerView.setAdapter(new WorkoutSelectAdapter(v.getContext(),Exercise.EXERCISES,workout_target,workout_name,workout_with_equ));
+            recyclerView.setAdapter(new WorkoutSelectAdapter(toSelect,v.getContext(),Exercise.EXERCISES,workout_target,workout_name,workout_with_equ));
         }
         return v;
     }

@@ -54,9 +54,17 @@ public class WorkoutEditFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(v.getContext()));
         if (getArguments() != null) {
             final int id = getArguments().getInt(ARG_WORKOUT_ID);
-            recyclerView.setAdapter(new WorkoutEditAdapter(v.getContext(),Workout.WORKOUTS.get(id).exerciseDetails));
+            final Workout workout = Workout.WORKOUTS.get(id);
+            recyclerView.setAdapter(new WorkoutEditAdapter(v.getContext(),workout.exerciseDetails));
             final TextView title = v.findViewById(R.id.custom_workout_edit_list_name);
-            title.setText(Workout.WORKOUTS.get(id).getName());        }
+            title.setText(workout.getName());
+            title.setOnFocusChangeListener((v1, hasFocus) -> {
+                final TextView t = (TextView) v1;
+                if(!hasFocus){
+                    workout.setName(t.getText().toString());
+                }
+            });
+        }
         return v;
     }
 }

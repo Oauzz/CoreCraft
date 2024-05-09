@@ -28,9 +28,10 @@ public class WorkoutPlayAdapter extends RecyclerView.Adapter<WorkoutPlayViewHold
 
     @Override
     public void onBindViewHolder(@NonNull WorkoutPlayViewHolder holder, int position) {
+        holder.current = holder.getBindingAdapterPosition();
         final Workout.ExerciseDetails details = exerciseDetails.get(position);
-        holder.exerciseImage.setImageResource(details.exercise.image);
-        holder.exerciseName.setText(details.exercise.name);
+        holder.exerciseImage.setExercise(details.getExercise());
+        holder.exerciseName.setText(details.exercise.getName());
         holder.exerciseAmount.setText(String.format(Locale.getDefault(),
                 "%d %s X %d %s",
                 details.sets,

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/exercise_select_btn"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -13,7 +14,7 @@
         android:layout_width="120dp"
         android:layout_height="70dp"
         app:cardCornerRadius="20dp">
-        <ImageView
+        <com.corecraft.ExerciseViewer
             android:id="@+id/exercise_select_img"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

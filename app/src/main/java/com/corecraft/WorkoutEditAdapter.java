@@ -1,6 +1,9 @@
 package com.corecraft;
 
+import static com.corecraft.MainActivity.fragmentManager;
+
 import android.content.Context;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -30,20 +33,28 @@ public class WorkoutEditAdapter extends RecyclerView.Adapter<WorkoutEditViewHold
     public void onBindViewHolder(@NonNull WorkoutEditViewHolder holder, int position) {
         final Workout.ExerciseDetails details = exerciseDetails.get(position);
         holder.id = holder.getBindingAdapterPosition();
-        holder.exerciseImage.setImageResource(details.exercise.image);
-        holder.exerciseName.setText(details.exercise.name);
+        holder.exerciseImage.setExercise(details.getExercise());
+        holder.exerciseName.setText(details.getExercise().getName());
         holder.exerciseAmount.setText(String.format(Locale.getDefault(),
                 "%d %s X %d %s",
-                details.sets,
+                details.getSets(),
                 context.getString(R.string.sets),
-                details.reps,
+                details.getReps(),
                 context.getString(R.string.reps))
         );
         holder.exerciseDelete.setOnClickListener(v -> {
             exerciseDetails.remove(holder.id);
             notifyItemRemoved(holder.id);
         });
+        holder.exerciseEdit.setOnClickListener(v -> {
+            ExerciseEditDialog dialog = new ExerciseEditDialog(this,holder.id,details,Math.min(((int)(holder.exerciseImage.getResources().getDisplayMetrics().widthPixels * 0.8)),ExerciseEditDialog.MAX_WIDTH));
+//            dialog.showNow(fragmentManager,"test");
+        fragmentManager.beginTransaction()
+                .add(dialog,"select")
+                .addToBackStack("select")
+                .commit();
 
+        });
     }
 
     @Override
