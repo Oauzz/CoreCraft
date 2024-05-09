@@ -10,6 +10,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -70,12 +73,22 @@ public class WorkoutFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_workout_list, container, false);
+        final WorkoutAdapter adapter = new WorkoutAdapter(v.getContext(),Workout.WORKOUTS,manager);
+
+        final Button addWorkBtn = v.findViewById(R.id.custom_workout_add_list_btn_new);
+        addWorkBtn.setOnClickListener(tmp -> {
+            final Workout workout = new Workout(Workout.WORKOUTS.size(),"NEW WORKOUT",new ArrayList<>());
+            Workout.WORKOUTS.add(workout);
+            adapter.notifyItemInserted(workout.getId());
+        });
+
         RecyclerView recyclerView = v.findViewById(R.id.custom_workout_list);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(v.getContext()));
-        recyclerView.setAdapter(new WorkoutAdapter(v.getContext(),Workout.WORKOUTS,manager));
+        recyclerView.setAdapter(adapter);
         return v;
     }
 }

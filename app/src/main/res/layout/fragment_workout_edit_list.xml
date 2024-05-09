@@ -37,6 +37,7 @@
             <Button
                 android:id="@+id/custom_workout_edit_list_btn_new"
                 android:layout_marginHorizontal="50dp"
+                android:layout_marginBottom="10dp"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_alignParentEnd="true"

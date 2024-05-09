@@ -1,9 +1,12 @@
 package com.corecraft;
 
+import static com.corecraft.MainActivity.fragmentManager;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
@@ -49,13 +52,16 @@ public class WorkoutEditFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View v = inflater.inflate(R.layout.fragment_workout_edit_list, container, false);
+        final Button addEx = v.findViewById(R.id.custom_workout_edit_list_btn_new);
+
         final RecyclerView recyclerView = v.findViewById(R.id.custom_workout_edit_list);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(v.getContext()));
         if (getArguments() != null) {
             final int id = getArguments().getInt(ARG_WORKOUT_ID);
             final Workout workout = Workout.WORKOUTS.get(id);
-            recyclerView.setAdapter(new WorkoutEditAdapter(v.getContext(),workout.exerciseDetails));
+            final WorkoutEditAdapter adapter = new WorkoutEditAdapter(v.getContext(),workout.exerciseDetails);
+            recyclerView.setAdapter(adapter);
             final TextView title = v.findViewById(R.id.custom_workout_edit_list_name);
             title.setText(workout.getName());
             title.setOnFocusChangeListener((v1, hasFocus) -> {
@@ -63,6 +69,17 @@ public class WorkoutEditFragment extends Fragment {
                 if(!hasFocus){
                     workout.setName(t.getText().toString());
                 }
+            });
+
+            addEx.setOnClickListener(tmp -> {
+                Workout.ExerciseDetails details = new Workout.ExerciseDetails(Exercise.EXERCISES.get(0),4,8);
+                workout.exerciseDetails.add(details);
+                ExerciseEditDialog dialog = new ExerciseEditDialog(adapter,adapter.getItemCount(),details,Math.min(((int)(getResources().getDisplayMetrics().widthPixels * 0.8)),ExerciseEditDialog.MAX_WIDTH));
+//            dialog.showNow(fragmentManager,"test");
+                fragmentManager.beginTransaction()
+                        .add(dialog,"select")
+                        .addToBackStack("select")
+                        .commit();
             });
         }
         return v;

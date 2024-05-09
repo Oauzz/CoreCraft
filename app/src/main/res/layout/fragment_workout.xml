@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginVertical="5dp"
-    android:background="@drawable/workout_btn"
+    android:background="@drawable/workout_button"
     android:orientation="horizontal"
     android:id="@+id/fragment_workout_layout">
 
@@ -20,9 +20,10 @@
         android:maxLines="1"
         android:text="Workout title 1"
         android:textAppearance="?attr/textAppearanceListItem"
-        android:textColor="@color/white"
+        android:textColor="@color/primary_color_2"
         android:textSize="12sp"
-        app:drawableLeftCompat="@drawable/workout" />
+        app:drawableLeftCompat="@drawable/workout"
+        app:drawableTint="@color/primary_color_2" />
 
     <Button
         android:id="@+id/workout_item_edit"

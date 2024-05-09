@@ -68,8 +68,10 @@ public class ExerciseEditDialog extends DialogFragment {
         final EditText repsEdit = view.findViewById(R.id.fragment_exercise_reps_text);
         final Button addRepsBtn = view.findViewById(R.id.fragment_exercise_reps_add);
 
+        exImg.setImageResource(details.getExercise().getImage());
         setsEdit.setText(String.valueOf(sets));
         repsEdit.setText(String.valueOf(reps));
+
         subSetsBtn.setOnClickListener(v -> {
             sets = Math.max(Integer.parseInt(setsEdit.getText().toString())-1,0);
             setsEdit.setText(String.valueOf(sets));
@@ -126,6 +128,9 @@ public class ExerciseEditDialog extends DialogFragment {
         details.setReps(reps);
         details.setSets(sets);
         dismiss();
+        if(adapter.getItemCount() == holderId){
+            adapter.notifyItemInserted(holderId);
+        }
         adapter.notifyItemChanged(holderId);
     }
 
