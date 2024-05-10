@@ -26,7 +26,6 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:textAlignment="center"
-        android:paddingHorizontal="10dp"
         android:paddingVertical="5dp"
         android:layout_margin="10dp"
         android:text="@string/workout_title"

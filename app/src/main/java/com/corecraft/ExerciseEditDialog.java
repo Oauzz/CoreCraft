@@ -27,7 +27,7 @@ import com.bumptech.glide.request.RequestOptions;
 import java.util.Objects;
 
 public class ExerciseEditDialog extends DialogFragment {
-    public static final String REQUEST_KEY = "exercise";
+    public static final String REQUEST_KEY = "Exercise";
     public final static int MAX_WIDTH = 960;
     public final static double GIF_ASPECT_RATIO = 540.0/960.0;
 
@@ -89,7 +89,7 @@ public class ExerciseEditDialog extends DialogFragment {
             repsEdit.setText(String.valueOf(reps));
         });
         getParentFragmentManager()
-                .setFragmentResultListener("Exercise", this, (requestKey, result) -> {
+                .setFragmentResultListener(REQUEST_KEY, this, (requestKey, result) -> {
                     final int id = result.getInt("id");
                     Exercise exercise = null;
                     {

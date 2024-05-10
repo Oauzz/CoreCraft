@@ -1,11 +1,14 @@
 package com.corecraft;
 
+import static com.corecraft.MainActivity.fragmentManager;
+import static com.corecraft.PlanFragment.REQUEST_KEY;
+import static com.corecraft.PlanFragment.WORKOUT_ID;
+
 import android.annotation.SuppressLint;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.TimePicker;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,13 +17,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class PlanAdapter extends RecyclerView.Adapter<PlanViewHolder> {
-
+    private final PlanFragment planFragment;
     private final Context context;
     private final Plans plan;
     @SuppressLint("SimpleDateFormat")
     public static final SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
 
-    public PlanAdapter(Context context, Plans plan) {
+    public PlanAdapter(PlanFragment planFragment, Context context, Plans plan) {
+        this.planFragment = planFragment;
         this.context = context;
         this.plan = plan;
     }
@@ -50,7 +54,23 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanViewHolder> {
             );
             dialog.show();
         });
+
         holder.getTitle().setText(planWorkout.getWorkout().getName());
+        holder.getTitle().setOnClickListener(v -> {
+            planFragment.getParentFragmentManager().setFragmentResultListener(
+                    REQUEST_KEY,planFragment,
+                    (requestKey, result) -> {
+                        final int exercise_id = result.getInt(WORKOUT_ID);
+                        planWorkout.setWorkout(Workout.WORKOUTS.get(exercise_id));
+                        notifyItemChanged(holder.id);
+                    });
+            WorkoutFragment workoutFragment = WorkoutFragment.newInstance(true);
+            fragmentManager.beginTransaction()
+                    .replace(R.id.home_content,workoutFragment)
+                    .addToBackStack(null)
+                    .commit();
+        });
+
         holder.getDel().setOnClickListener(v -> {
             plan.getWorkouts().remove(holder.id);
             notifyItemRemoved(holder.id);

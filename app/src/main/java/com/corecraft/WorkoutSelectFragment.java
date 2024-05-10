@@ -48,7 +48,7 @@ public class WorkoutSelectFragment extends Fragment {
         this.manager = manager;
     }
 
-    private FragmentManager manager;
+    private FragmentManager manager = MainActivity.fragmentManager;
 
 
     public WorkoutSelectFragment() {

@@ -53,8 +53,8 @@ public class MainActivity extends AppCompatActivity {
 
         workouts.setOnClickListener(v -> {
             selectOnly((TextView) v);
-            WorkoutFragment workoutFragment = new WorkoutFragment();
-            workoutFragment.setManager(getSupportFragmentManager());
+            WorkoutFragment workoutFragment = WorkoutFragment.newInstance(false);
+//            workoutFragment.setManager(getSupportFragmentManager());
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.home_content,workoutFragment)
                     .commit();

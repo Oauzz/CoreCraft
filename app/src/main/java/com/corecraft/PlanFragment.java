@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.sql.Date;
+import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -26,6 +27,8 @@ import java.util.Locale;
  */
 public class PlanFragment extends Fragment {
 
+    public static final String REQUEST_KEY = "WORKOUT_SELECTED";
+    public static final String WORKOUT_ID = "WORKOUT_ID";
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_TIME_LONG = "date";
@@ -53,6 +56,7 @@ public class PlanFragment extends Fragment {
         if (getArguments() != null) {
             date.setTime(getArguments().getLong(ARG_TIME_LONG));
         }
+
     }
 
     @Override
@@ -73,18 +77,23 @@ public class PlanFragment extends Fragment {
             }
             if(plans == null){
                 plans = new Plans(date,new ArrayList<>());
+                Plans.PLANS.add(plans);
                 Toast.makeText(getContext(),"Here",Toast.LENGTH_SHORT).show();
             }
         }
-        final PlanAdapter adapter = new PlanAdapter(getContext(),plans);
+        final PlanAdapter adapter = new PlanAdapter(this,getContext(),plans);
         final RecyclerView recyclerView = view.findViewById(R.id.workout_time_list);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         recyclerView.setAdapter(adapter);
 
         final Button addBtn = view.findViewById(R.id.workout_time_add_btn);
+        // This is stupidly required
+        final Plans _plans = plans;
         addBtn.setOnClickListener(v -> {
-
+            final Plans.PlanWorkout planWorkout = new Plans.PlanWorkout(Workout.WORKOUTS.get(0), Time.valueOf("09:00:00"));
+            _plans.getWorkouts().add(planWorkout);
+            adapter.notifyItemInserted(_plans.getWorkouts().size()-1);
         });
         return view;
     }

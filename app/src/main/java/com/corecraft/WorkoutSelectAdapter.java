@@ -68,7 +68,7 @@ public class WorkoutSelectAdapter extends RecyclerView.Adapter<WorkoutSelectView
             holder.exerciseBtn.setOnClickListener(v -> {
                 Bundle args = new Bundle();
                 args.putInt("id",exercise.id);
-                fragmentManager.setFragmentResult("Exercise",args);
+                fragmentManager.setFragmentResult(ExerciseEditDialog.REQUEST_KEY,args);
                 fragmentManager.popBackStack();
             });
         }
