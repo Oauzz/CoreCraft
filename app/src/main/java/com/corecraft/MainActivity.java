@@ -1,5 +1,6 @@
 package com.corecraft;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,9 +11,19 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.applandeo.materialcalendarview.CalendarView;
+import com.applandeo.materialcalendarview.builders.DatePickerBuilder;
+import com.applandeo.materialcalendarview.listeners.OnSelectDateListener;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.stream.Collectors;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -47,6 +58,46 @@ public class MainActivity extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.home_content,workoutFragment)
                     .commit();
+        });
+
+        plans.setOnClickListener(v -> {
+            selectOnly((TextView) v);
+//            DatePickerFragment datePickerFragment = new DatePickerFragment();
+//            datePickerFragment.showNow(getSupportFragmentManager(),"date_picker");
+            DatePickerBuilder builder = new DatePickerBuilder(this, list -> {
+                PlanFragment planFragment = PlanFragment.newInstance(new java.sql.Date(list.get(0).getTimeInMillis()));
+                getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.home_content,planFragment)
+                                        .addToBackStack(null)
+                                                .commit();
+
+            })
+                    .pickerType(CalendarView.ONE_DAY_PICKER)
+                    .date(Calendar.getInstance()) // Initial date as Calendar object
+                    .headerColor(R.color.primary_color_2) // Color of the dialog header
+                    .headerLabelColor(R.color.white) // Color of the header label
+                    .abbreviationsBarColor(R.color.primary_color_3) // Color of bar with day symbols
+                    .abbreviationsLabelsColor(R.color.primary_color_4) // Color of symbol labels
+                    .abbreviationsBarVisibility(CalendarView.VISIBLE) // Visibility of abbreviations bar
+                    .pagesColor(R.color.primary_color_4) // Color of the calendar background
+                    .selectionColor(R.color.primary_color_6) // Color of the selection circle
+                    .selectionLabelColor(R.color.primary_color_7) // Color of the label in the circle
+                    .daysLabelsColor(R.color.primary_color_1) // Color of days numbers
+                    .anotherMonthsDaysLabelsColor(R.color.primary_color_5) // Color of visible days numbers from previous and next month page
+                    .disabledDaysLabelsColor(R.color.primary_color_3) // Color of disabled days numbers
+                    .highlightedDaysLabelsColor(R.color.white) // Color of highlighted days numbers
+                    .todayColor(R.color.primary_color_4) // Color of the present day background
+                    .todayLabelColor(R.color.primary_color_5) // Color of the today number
+                    .dialogButtonsColor(R.color.background_color) // Color of "Cancel" and "OK" buttons
+                    .typefaceSrc(R.font.carterone_regular); // Calendar font
+            builder.highlightedDays(new ArrayList<>(Plans.PLANS.stream().map(p -> {
+                final Calendar calendar = Calendar.getInstance();
+                calendar.setTime(p.getDate());
+                return calendar;
+            }).distinct().collect(Collectors.toList())));
+
+            builder.build().show();
+
         });
 
         bot.setOnClickListener(v -> {

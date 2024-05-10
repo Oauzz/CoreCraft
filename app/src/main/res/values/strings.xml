@@ -146,4 +146,7 @@
     <string name="select_exercise">Select Exercise</string>
     <string name="minus">-</string>
     <string name="_0">0</string>
+    <string name="_9_30">9:30</string>
+    <string name="_06_06_2024">06/06/2024</string>
+    <string name="dropdown">Dropdown</string>
 </resources>
