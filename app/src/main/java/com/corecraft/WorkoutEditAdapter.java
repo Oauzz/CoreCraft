@@ -10,10 +10,11 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
-public class WorkoutEditAdapter extends RecyclerView.Adapter<WorkoutEditViewHolder> {
+public class WorkoutEditAdapter extends RecyclerView.Adapter<WorkoutEditViewHolder> implements ItemTouchHelperContract {
 
     Context context;
     List<Workout.ExerciseDetails> exerciseDetails;
@@ -60,5 +61,11 @@ public class WorkoutEditAdapter extends RecyclerView.Adapter<WorkoutEditViewHold
     @Override
     public int getItemCount() {
         return exerciseDetails.size();
+    }
+
+    @Override
+    public void onRowMoved(int fromPosition, int toPosition) {
+        Collections.swap(exerciseDetails,fromPosition,toPosition);
+        notifyItemMoved(fromPosition,toPosition);
     }
 }

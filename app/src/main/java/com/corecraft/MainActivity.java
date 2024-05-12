@@ -10,6 +10,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +37,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
+
+        ((Button) findViewById(R.id.toolbar_back_btn)).setOnClickListener(v -> {
+            getSupportFragmentManager().popBackStack();
+        });
+
+        ((TextView) findViewById(R.id.toolbar_title)).setText(R.string.home);
 
         fragmentManager = getSupportFragmentManager();
 
@@ -99,6 +106,16 @@ public class MainActivity extends AppCompatActivity {
             builder.build().show();
 
         });
+
+        stats.setOnClickListener(v -> {
+            selectOnly((TextView) v);
+            StatisticsFragment statisticsFragment = StatisticsFragment.newInstance("");
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.home_content,statisticsFragment)
+                    .addToBackStack(null)
+                    .commit();
+        });
+
 
         bot.setOnClickListener(v -> {
             selectOnly((TextView) v);

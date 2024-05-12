@@ -33,7 +33,7 @@
             android:textSize="22sp"
             android:textColor="@color/white"
             android:fontFamily="@font/carterone_regular"
-            android:text="My Workouts" />
+            android:text="@string/my_workouts" />
 
         <Button
             android:id="@+id/toolbar_home_btn"

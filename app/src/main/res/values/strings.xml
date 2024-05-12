@@ -149,4 +149,13 @@
     <string name="_9_30">9:30</string>
     <string name="_06_06_2024">06/06/2024</string>
     <string name="dropdown">Dropdown</string>
+    <string name="my_exercises">My Exercises</string>
+    <string name="my_workouts">My Workouts</string>
+    <string name="my_plans">My Plans</string>
+    <string name="general_stats">General Stats</string>
+    <string name="time">Time</string>
+    <string name="kcal">Kcal</string>
+    <string name="_10">10</string>
+    <string name="exercise_frequency">Exercise Frequency</string>
+    <string name="my_stats">My Stats</string>
 </resources>

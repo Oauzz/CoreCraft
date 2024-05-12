@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -62,6 +63,11 @@ public class WorkoutEditFragment extends Fragment {
             final Workout workout = Workout.WORKOUTS.get(id);
             final WorkoutEditAdapter adapter = new WorkoutEditAdapter(v.getContext(),workout.exerciseDetails);
             recyclerView.setAdapter(adapter);
+
+            ItemTouchHelper.Callback callback = new ItemMoveCallback(adapter);
+            ItemTouchHelper touchHelper = new ItemTouchHelper(callback);
+            touchHelper.attachToRecyclerView(recyclerView);
+
             final TextView title = v.findViewById(R.id.custom_workout_edit_list_name);
             title.setText(workout.getName());
             title.setOnFocusChangeListener((v1, hasFocus) -> {

@@ -18,6 +18,8 @@ import java.sql.Date;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Locale;
 
 /**
@@ -62,6 +64,9 @@ public class PlanFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        ((TextView) requireActivity().findViewById(R.id.toolbar_title)).setText(R.string.my_plans);
+
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.workout_time_list, container, false);
         ((TextView) view.findViewById(R.id.workout_date_title)).setText(

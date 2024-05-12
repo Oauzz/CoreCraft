@@ -88,7 +88,8 @@ public class WorkoutSelectFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        ((TextView) requireActivity().findViewById(R.id.toolbar_title)).setText(R.string.my_exercises);
+
         final View v = inflater.inflate(R.layout.fragment_workout_select_list, container, false);
         final LinearLayout filterBtn = v.findViewById(R.id.exercise_filter_btn);
         filterBtn.setOnClickListener(btn -> {
