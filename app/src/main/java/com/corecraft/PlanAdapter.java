@@ -44,6 +44,7 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanViewHolder> {
         holder.getTime().setOnClickListener(v -> {
             final TimePickerDialog dialog = new TimePickerDialog(
                     context,
+                    R.style.MyTimePicker,
                     (view, hourOfDay, minute) -> {
                         planWorkout.getTime().setTime((((long)hourOfDay)*60 + ((long)minute)) * 60 * 1000);
                         notifyItemChanged(holder.id);

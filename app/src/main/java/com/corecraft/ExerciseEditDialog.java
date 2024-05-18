@@ -5,7 +5,6 @@ import static com.corecraft.MainActivity.fragmentManager;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,15 +13,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 
 import java.util.Objects;
 
@@ -37,10 +32,10 @@ public class ExerciseEditDialog extends DialogFragment {
     private int sets,reps;
 
     private final Workout.ExerciseDetails details;
-    private final RecyclerView.Adapter<WorkoutEditViewHolder> adapter;
+    private final RecyclerView.Adapter<WorkoutEditAdapter.WorkoutEditViewHolder> adapter;
     private final int holderId;
 
-    public ExerciseEditDialog(RecyclerView.Adapter<WorkoutEditViewHolder> adapter,int id,Workout.ExerciseDetails details, int width){
+    public ExerciseEditDialog(RecyclerView.Adapter<WorkoutEditAdapter.WorkoutEditViewHolder> adapter, int id, Workout.ExerciseDetails details, int width){
         this.adapter = adapter;
         this.holderId = id;
         this.details = details;

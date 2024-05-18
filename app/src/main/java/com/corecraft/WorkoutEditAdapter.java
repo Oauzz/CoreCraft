@@ -3,9 +3,11 @@ package com.corecraft;
 import static com.corecraft.MainActivity.fragmentManager;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,7 +16,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
-public class WorkoutEditAdapter extends RecyclerView.Adapter<WorkoutEditViewHolder> implements ItemTouchHelperContract {
+public class WorkoutEditAdapter extends RecyclerView.Adapter<WorkoutEditAdapter.WorkoutEditViewHolder> implements ItemTouchHelperContract {
 
     Context context;
     List<Workout.ExerciseDetails> exerciseDetails;
@@ -67,5 +69,20 @@ public class WorkoutEditAdapter extends RecyclerView.Adapter<WorkoutEditViewHold
     public void onRowMoved(int fromPosition, int toPosition) {
         Collections.swap(exerciseDetails,fromPosition,toPosition);
         notifyItemMoved(fromPosition,toPosition);
+    }
+
+    public static class WorkoutEditViewHolder extends RecyclerView.ViewHolder {
+        public int id;
+        public ExerciseViewer exerciseImage;
+        public TextView exerciseName,exerciseAmount;
+        public Button exerciseEdit,exerciseDelete;
+        public WorkoutEditViewHolder(@NonNull View itemView) {
+            super(itemView);
+            exerciseImage = itemView.findViewById(R.id.exercise_edit_img);
+            exerciseName = itemView.findViewById(R.id.exercise_edit_name);
+            exerciseAmount = itemView.findViewById(R.id.exercise_edit_amount);
+            exerciseEdit = itemView.findViewById(R.id.exercise_edit_modify_btn);
+            exerciseDelete = itemView.findViewById(R.id.exercise_edit_delete_btn);
+        }
     }
 }

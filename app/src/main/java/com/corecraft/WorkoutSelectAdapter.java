@@ -1,24 +1,22 @@
 package com.corecraft;
 
 import static com.corecraft.MainActivity.fragmentManager;
-import static com.corecraft.WorkoutSelectFragment.ARG_WORKOUT_NAME;
-import static com.corecraft.WorkoutSelectFragment.ARG_WORKOUT_TARGET;
-import static com.corecraft.WorkoutSelectFragment.ARG_WORKOUT_WITH_EQU;
-import static com.corecraft.WorkoutSelectFragment.REQUEST_KEY;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
-public class WorkoutSelectAdapter extends RecyclerView.Adapter<WorkoutSelectViewHolder> {
+public class WorkoutSelectAdapter extends RecyclerView.Adapter<WorkoutSelectAdapter.WorkoutSelectViewHolder> {
     boolean toSelect;
     Context context;
     List<Exercise> orgExercises;
@@ -77,5 +75,19 @@ public class WorkoutSelectAdapter extends RecyclerView.Adapter<WorkoutSelectView
     @Override
     public int getItemCount() {
         return exercises.size();
+    }
+
+    public static class WorkoutSelectViewHolder extends RecyclerView.ViewHolder {
+
+        public LinearLayout exerciseBtn;
+        public ExerciseViewer exerciseImage;
+        public TextView exerciseName,exerciseTarget;
+        public WorkoutSelectViewHolder(@NonNull View itemView) {
+            super(itemView);
+            exerciseBtn = itemView.findViewById(R.id.exercise_select_btn);
+            exerciseImage = itemView.findViewById(R.id.exercise_select_img);
+            exerciseName = itemView.findViewById(R.id.exercise_select_name);
+            exerciseTarget = itemView.findViewById(R.id.exercise_select_target);
+        }
     }
 }

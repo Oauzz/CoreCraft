@@ -5,7 +5,11 @@ import static com.corecraft.PlanFragment.WORKOUT_ID;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
@@ -13,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutViewHolder> {
+public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.WorkoutViewHolder> {
 
     final WorkoutFragment master;
     final boolean toSelect;
@@ -70,5 +74,20 @@ public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutViewHolder> {
     @Override
     public int getItemCount() {
         return workouts.size();
+    }
+
+    public static class WorkoutViewHolder extends RecyclerView.ViewHolder{
+
+        public int id;
+        public LinearLayout workout;
+        public TextView workoutName;
+        public Button workoutEdit,workoutDel;
+        public WorkoutViewHolder(@NonNull View itemView) {
+            super(itemView);
+            workoutName = itemView.findViewById(R.id.workout_item_id);
+            workoutEdit = itemView.findViewById(R.id.workout_item_edit);
+            workoutDel = itemView.findViewById(R.id.workout_item_del);
+            workout = itemView.findViewById(R.id.fragment_workout_layout);
+        }
     }
 }

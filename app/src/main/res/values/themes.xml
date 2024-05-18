@@ -49,4 +49,13 @@
         <!-- Customize the color of the clock numbers -->
         <item name="android:textColorSecondary">@color/primary_color_5</item>
     </style>
+    <style name="MyTimePicker" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:timePickerMode">clock</item>
+        <item name="android:headerBackground">@color/primary_color_1</item>
+        <item name="android:numbersTextColor">@color/primary_color_2</item>
+        <item name="android:numbersInnerTextColor">@color/primary_color_3</item>
+        <item name="android:numbersSelectorColor">@color/primary_color_4</item>
+        <item name="android:numbersBackgroundColor">@color/primary_color_5</item>
+        <item name="android:amPmTextColor">?android:attr/textColorSecondary</item>
+    </style>
 </resources>
