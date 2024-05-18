@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_color">
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
     <LinearLayout
         android:layout_marginVertical="20dp"
         android:layout_marginHorizontal="20dp"
@@ -114,16 +118,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/stats">
+
         <TextView
             android:id="@+id/stats_title_2"
-            android:layout_margin="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/exercise_frequency"
-            android:textSize="20sp"
-            android:textColor="@color/black"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:fontFamily="@font/carterone_regular"
-            android:textAlignment="center"/>
+            android:text="@string/exercise_frequency"
+            android:maxLines="1"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
         <Spinner
             android:id="@+id/stats_btn_2"
@@ -144,4 +153,46 @@
             android:layout_width="match_parent"
             android:layout_height="300dp"/>
     </RelativeLayout>
+    <RelativeLayout
+        android:layout_margin="20dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/stats">
+
+        <TextView
+            android:id="@+id/stats_title_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/carterone_regular"
+            android:text="@string/total_weight"
+            android:maxLines="1"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <Spinner
+            android:id="@+id/stats_btn_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/stats_title_3"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:textAlignment="center"
+            android:background="@drawable/workout_btn"/>
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:layout_below="@id/stats_title_3"
+            android:id="@+id/stats_chart_3"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"/>
+    </RelativeLayout>
 </LinearLayout>
+</ScrollView>

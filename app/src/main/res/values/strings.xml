@@ -158,4 +158,5 @@
     <string name="_10">10</string>
     <string name="exercise_frequency">Exercise Frequency</string>
     <string name="my_stats">My Stats</string>
+    <string name="total_weight">Total Weight</string>
 </resources>
