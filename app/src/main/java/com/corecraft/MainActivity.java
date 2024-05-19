@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +18,8 @@ import android.widget.Toast;
 import com.applandeo.materialcalendarview.CalendarView;
 import com.applandeo.materialcalendarview.builders.DatePickerBuilder;
 import com.applandeo.materialcalendarview.listeners.OnSelectDateListener;
+import com.corecraft.database.DB;
+import com.corecraft.model.ExerciseEntity;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -32,11 +35,30 @@ public class MainActivity extends AppCompatActivity {
 
     TextView home,workouts,plans,stats,bot;
     List<TextView> bottomToolbar = new ArrayList<>();
+    DB db = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
+        db = DB.getInstance(this);
+        List<ExerciseEntity> exercises = db.exerciseDao().getAll();
+        if(exercises.size() == 0){
+            ExerciseEntity.EXERCISES.forEach(ex -> {
+                db.exerciseDao().save(new ExerciseEntity(
+                        ex.getName(),
+                        ex.getDescription(),
+                        ex.getTarget(),
+                        ex.isWithEquipment(),
+                        ex.getImage(),
+                        ex.getVideo(),
+                        ex.getInstructions()
+                ));
+            });
+        }
+        db.exerciseDao().getAll().forEach(ex -> {
+            Log.e("EXERCISE",ex.toString());
+        });
 
         ((Button) findViewById(R.id.toolbar_back_btn)).setOnClickListener(v -> {
             getSupportFragmentManager().popBackStack();
