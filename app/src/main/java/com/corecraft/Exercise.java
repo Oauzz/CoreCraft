@@ -1,10 +1,12 @@
 package com.corecraft;
 
+import com.corecraft.model.ExerciseEntity;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Exercise {
-    public static final List<Exercise> EXERCISES = new ArrayList<>();
+    public static List<Exercise> EXERCISES = new ArrayList<>();
     static{
         EXERCISES.add(new Exercise(0,"Bicep Curls","Popular exercise that targets the biceps brachii muscle, which is responsible for flexing the elbow and forearm",TargetMuscles.ARM,true,R.drawable.bicep_curl,R.drawable.bicep_curl_vid,"1.) Start by standing with your feet shoulders width apart.\n\u20282.) Pick up the barbells using a palm inward grip.\n\u20283.) Curl each barbell alternating each time.\n\u20284.) Repeat for the desired amount of reps."));
         EXERCISES.add(new Exercise(1,"Machine Assisted Dips","Classical chest exercise, requires strong shoulder",TargetMuscles.CHEST | TargetMuscles.ARM,true,R.drawable.dip,R.drawable.dip_vid,""));
@@ -92,5 +94,18 @@ public class Exercise {
 
     public void setInstructions(String instructions) {
         this.instructions = instructions;
+    }
+
+    public static Exercise fromEntity(ExerciseEntity exercise){
+        return new Exercise(
+                exercise.getId(),
+                exercise.getName(),
+                exercise.getDescription(),
+                exercise.getTarget(),
+                exercise.isWithEquipment(),
+                exercise.getImage(),
+                exercise.getVideo(),
+                exercise.getInstructions()
+        );
     }
 }

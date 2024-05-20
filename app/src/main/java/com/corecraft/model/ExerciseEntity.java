@@ -32,7 +32,8 @@ public class ExerciseEntity {
         EXERCISES.add(new ExerciseEntity("Machine Assisted Dips","Classical chest exercise, requires strong shoulder",TargetMuscles.CHEST | TargetMuscles.ARM,true,R.drawable.dip,R.drawable.dip_vid,""));
         EXERCISES.add(new ExerciseEntity("Squats","Classical leg exercise",TargetMuscles.LEG,true,R.drawable.squat,R.drawable.squat_vid,""));
     }
-    @PrimaryKey(autoGenerate = true)
+    public static int ID = 0;
+    @PrimaryKey
     int id;
     String name;
     String description;
@@ -43,6 +44,8 @@ public class ExerciseEntity {
     String instructions;
 
     public ExerciseEntity(String name, String description, int target, boolean withEquipment, int image, int video, String instructions) {
+        this.id = ID;
+        ID++;
         this.name = name;
         this.description = description;
         this.target = target;

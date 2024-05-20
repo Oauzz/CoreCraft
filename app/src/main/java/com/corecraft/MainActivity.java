@@ -20,6 +20,11 @@ import com.applandeo.materialcalendarview.builders.DatePickerBuilder;
 import com.applandeo.materialcalendarview.listeners.OnSelectDateListener;
 import com.corecraft.database.DB;
 import com.corecraft.model.ExerciseEntity;
+import com.corecraft.model.ExerciseWithDetails;
+import com.corecraft.model.WorkoutEntity;
+import com.corecraft.model.WorkoutWithDetails;
+import com.corecraft.repository.ExerciseRepository;
+import com.corecraft.repository.WorkoutRepository;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -35,29 +40,53 @@ public class MainActivity extends AppCompatActivity {
 
     TextView home,workouts,plans,stats,bot;
     List<TextView> bottomToolbar = new ArrayList<>();
-    DB db = null;
+    ExerciseRepository exerciseRepository;
+    WorkoutRepository workoutRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
-        db = DB.getInstance(this);
-        List<ExerciseEntity> exercises = db.exerciseDao().getAll();
-        if(exercises.size() == 0){
-            ExerciseEntity.EXERCISES.forEach(ex -> {
-                db.exerciseDao().save(new ExerciseEntity(
-                        ex.getName(),
-                        ex.getDescription(),
-                        ex.getTarget(),
-                        ex.isWithEquipment(),
-                        ex.getImage(),
-                        ex.getVideo(),
-                        ex.getInstructions()
-                ));
-            });
-        }
-        db.exerciseDao().getAll().forEach(ex -> {
-            Log.e("EXERCISE",ex.toString());
+        exerciseRepository = new ExerciseRepository(this);
+        workoutRepository = new WorkoutRepository(this);
+
+        exerciseRepository.getAll(exercises -> {
+            if(exercises.size() == 0){
+                ExerciseEntity.EXERCISES.forEach(ex -> {
+                    exerciseRepository.save(new ExerciseEntity(
+                            ex.getName(),
+                            ex.getDescription(),
+                            ex.getTarget(),
+                            ex.isWithEquipment(),
+                            ex.getImage(),
+                            ex.getVideo(),
+                            ex.getInstructions()
+                    ));
+                });
+            }else{
+                Exercise.EXERCISES = exercises.stream().map(Exercise::fromEntity).collect(Collectors.toList());
+            }
+        });
+
+        workoutRepository.getAll(workouts -> {
+            if(workouts.size() == 0){
+                exerciseRepository.getAll(exs -> {
+                   Workout.WORKOUTS.forEach(w -> {
+                       workoutRepository.save(new WorkoutWithDetails(
+                               new WorkoutEntity(w.getName()),
+                               w.getExerciseDetails().stream().map(
+                                       d -> new ExerciseWithDetails(
+                                               exs.get(d.getExercise().getId()),
+                                               d.getSets(),
+                                               d.getReps()
+                                       )
+                               ).collect(Collectors.toList())
+                       ));
+                   });
+                });
+            }else{
+                Workout.WORKOUTS = workouts.stream().map(Workout::fromEntity).collect(Collectors.toList());
+            }
         });
 
         ((Button) findViewById(R.id.toolbar_back_btn)).setOnClickListener(v -> {
@@ -80,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
         bottomToolbar.add(stats);
         bottomToolbar.add(bot);
 
-        workouts.setOnClickListener(v -> {
+        home.setOnClickListener(v -> {
             selectOnly((TextView) v);
             WorkoutFragment workoutFragment = WorkoutFragment.newInstance(false);
 //            workoutFragment.setManager(getSupportFragmentManager());
@@ -139,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        bot.setOnClickListener(v -> {
+        workouts.setOnClickListener(v -> {
             selectOnly((TextView) v);
             WorkoutSelectFragment workoutSelectFragment = WorkoutSelectFragment.newInstance(
                     TargetMuscles.ARM | TargetMuscles.ABS | TargetMuscles.LEG
@@ -173,5 +202,25 @@ public class MainActivity extends AppCompatActivity {
 
         v.setTextColor(color_on);
         v.setCompoundDrawableTintList(color_state_on);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        workoutRepository.getAll(ws -> ws.forEach(w -> workoutRepository.delete(w)));
+        exerciseRepository.getAll(exs -> {
+            Workout.WORKOUTS.forEach(w -> {
+                workoutRepository.save(new WorkoutWithDetails(
+                        new WorkoutEntity(w.getName()),
+                        w.getExerciseDetails().stream().map(
+                                d -> new ExerciseWithDetails(
+                                        exs.get(d.getExercise().getId()),
+                                        d.getSets(),
+                                        d.getReps()
+                                )
+                        ).collect(Collectors.toList())
+                ));
+            });
+        });
     }
 }

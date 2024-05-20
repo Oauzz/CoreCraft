@@ -1,11 +1,15 @@
 package com.corecraft;
 
+import com.corecraft.model.ExerciseWithDetails;
+import com.corecraft.model.WorkoutWithDetails;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Workout {
-    public static final List<Workout> WORKOUTS = new ArrayList<>();
+    public static List<Workout> WORKOUTS = new ArrayList<>();
     static {
         WORKOUTS.add(new Workout(1,"first workout", new ArrayList<>(Arrays.asList(
                 new ExerciseDetails(Exercise.EXERCISES.get(0),4,8),
@@ -62,6 +66,14 @@ public class Workout {
         this.exerciseDetails = exerciseDetails;
     }
 
+    public static Workout fromEntity(WorkoutWithDetails workout){
+        return new Workout(
+                workout.getWorkout().getId(),
+                workout.getWorkout().getName(),
+                workout.getExercises().stream().map(ExerciseDetails::fromEntity).collect(Collectors.toList())
+        );
+    }
+
     public static class ExerciseDetails{
         Exercise exercise;
         int sets;
@@ -95,6 +107,14 @@ public class Workout {
 
         public void setReps(int reps) {
             this.reps = reps;
+        }
+
+        public static ExerciseDetails fromEntity(ExerciseWithDetails exercise){
+            return new ExerciseDetails(
+                    Exercise.fromEntity(exercise.getExercise()),
+                    exercise.getSets(),
+                    exercise.getReps()
+            );
         }
     }
 }

@@ -5,11 +5,14 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "workout")
 public class WorkoutEntity {
-    @PrimaryKey(autoGenerate = true)
+    public static int ID = 0;
+    @PrimaryKey
     int id;
     String name;
 
     public WorkoutEntity(String name) {
+        this.id = ID;
+        ID++;
         this.name = name;
     }
 
